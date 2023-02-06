@@ -1,0 +1,4 @@
+fusionauth-client==1.42.0
+Django==3.2.15
+mozilla-django-oidc==2.0.0
+
