@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#tag::installedApps[]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +42,9 @@ INSTALLED_APPS = [
     'app',
     'mozilla_django_oidc',
 ]
+#end::installedApps[]
 
+#tag::oidcConfig[]
 AUTHENTICATION_BACKENDS = (
     'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
 )
@@ -61,6 +64,7 @@ OIDC_OP_JWKS_ENDPOINT = "http://localhost:9011/.well-known/jwks.json"
 
 LOGIN_REDIRECT_URL = "http://localhost:8000/app/"
 LOGOUT_REDIRECT_URL = "http://localhost:8000/app/"
+#end::oidcConfig[]
 
 
 MIDDLEWARE = [
