@@ -39,7 +39,29 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'mozilla_django_oidc',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+)
+
+# The below config is taken from fusionauth admin UI when you set up the Django application in it
+OIDC_RP_CLIENT_ID = 'e9fdb985-9173-4e01-9d73-ac2d60d1dc8e'
+OIDC_RP_CLIENT_SECRET = 'change-this-in-production-to-be-a-real-secret'
+
+OIDC_OP_AUTHORIZATION_ENDPOINT = "http://localhost:9011/oauth2/authorize"
+OIDC_OP_TOKEN_ENDPOINT = "http://localhost:9011/oauth2/token"
+OIDC_OP_USER_ENDPOINT = "http://localhost:9011/oauth2/userinfo"
+
+OIDC_RP_SCOPES = "openid profile email"
+
+OIDC_RP_SIGN_ALGO = "RS256"
+OIDC_OP_JWKS_ENDPOINT = "http://localhost:9011/.well-known/jwks.json"
+
+LOGIN_REDIRECT_URL = "http://localhost:8000/app/"
+LOGOUT_REDIRECT_URL = "http://localhost:8000/app/"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
